@@ -11,6 +11,22 @@
   </head>
 
   <body>
-    <%= yield %>
+    <div class='bg-primary text-white text-center mb-4 p-4'>
+      <%= link_to root_path, class: 'text-white text-decoration-none' do %>
+        <h1 class='display-4'>Tech blog</h1>
+      <% end %>
+
+        <p class='lead'>
+          Another tech blog, you'll find tech stuff here.
+        </p>
+    </div>
+
+    <div class='container'>
+      <%= yield %>
+    </div>
+
+    <footer class='bg-primary text-white text-center mt-5 p-4'>
+      Copyright &copy; Someone <%= Date.current.year %>
+    </footer>
   </body>
 </html>
