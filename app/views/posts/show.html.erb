@@ -14,3 +14,31 @@
   </div>
 
 </div>
+
+<div class='m-5'>
+  <div class='text-center'>
+    <h4>
+      <%= pluralize @post.comments.count, 'Comentário' %>
+      <% if @post.comments.none? %>
+        <span class='badge text-bg-success'>Seja o primeiro a commentar!</span>
+      <% end %>
+    </h4>
+  </div>
+
+  <div class="shadow-sm m-3 p-3 bg-light rounded">
+    <%= form_with model: @comment, local: true do |form| %>
+      <%= form.hidden_field :post_id, value: @post.id %>
+      <div class='form-group mb-3'>
+        <%= form.label :author, class: 'mb-2' %>
+        <%= form.text_field :author, class: 'form-control' %>
+      </div>
+
+      <div class='form-group mb-3'>
+        <%= form.label :body, class: 'mb-2' %>
+        <%= form.text_area :body, class: 'form-control', rows: 2 %>
+      </div>
+
+      <%= form.submit 'Enviar', class: 'btn btn-primary', data: {disable_with: 'Enviando...'} %>
+    <% end %>
+  </div>
+</div>
